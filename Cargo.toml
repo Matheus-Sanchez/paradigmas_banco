@@ -1,0 +1,10 @@
+[package]
+name = "rust_lua_kv_db"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+mlua = { version = "0.8", features = ["lua54"] }
+anyhow = "1.0"
+thiserror = "1.0"
