@@ -26,29 +26,38 @@ Exemplo:
 ADD cpf_maria 12345678909   -> OK
 GET cpf_maria               -> 123.456.789-09
 ADD data_evento 2024-02-29  -> OK (ano bissexto)
-GET data_evento             -> 29/02/2024
+# Projeto Reiniciado
+
+Este repositório foi limpo para reimplementação do banco chave-valor Rust + Lua.
+
+## Próximos Passos Planejados
+1. Implementar estrutura simples de armazenamento (HashMap).
+2. Integrar `mlua` carregando dispatcher Lua (`extensions.lua`).
+3. Definir protocolo `{ success, result, error }` para validação/formatação.
+4. Adicionar regras: `cpf_*` e `data_*`.
+5. Criar CLI com comandos: ADD / GET / LIST / EXIT.
+6. Escrever testes automatizados.
+
+## Ambiente (Windows)
+Instalar toolchain Rust + Build Tools (MSVC):
+```powershell
+winget install Rustlang.Rustup -e
+winget install Microsoft.VisualStudio.2022.BuildTools -e --source winget --override "--quiet --wait --norestart --add Microsoft.VisualStudio.Workload.VCTools"
+```
+Verificar:
+```powershell
+rustc -V
+cargo -V
 ```
 
-## Requisitos
-- Rust (edition 2021)
-- Crate `mlua` (feature `lua54`) já baixa runtime embutido quando suportado; em alguns ambientes pode exigir `lua5.4` do sistema.
-
-## Executar
-```bash
+## Executar (placeholder atual)
+```powershell
 cargo run
 ```
-Ou versão otimizada:
-```bash
-cargo run --release
-```
 
-## Testes
-```bash
-cargo test
-```
+## Lua Dispatcher Atual
+Arquivo `src/lua/extensions.lua` retorna sempre sucesso e ecoa valor.
 
-## Extensão via Lua
-Adicione novas regras no `dispatch` do `lua/extensions.lua` criando novos prefixos de chave.
-
-## License
-MIT (ajuste se necessário)
+$env:Path += ";$env:USERPROFILE\.cargo\bin"
+cargo --version
+cargo 1.89.0 (c24e10642 2025-06-23)

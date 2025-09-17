@@ -3,9 +3,8 @@ name = "rust_lua_kv_db"
 version = "0.1.0"
 edition = "2021"
 
-
 [dependencies]
-# Adicionada feature "vendored" para compilar Lua embutido no Windows (evita depender de pkg-config / lua instalado).
-mlua = { version = "0.8", features = ["lua54", "vendored"] }
 anyhow = "1.0"
 thiserror = "1.0"
+# Deixamos mlua já declarado para futura integração (mesmo antes de usar) – objetivo acadêmico do projeto.
+mlua = { version = "0.8", features = ["lua54", "vendored" ] }
